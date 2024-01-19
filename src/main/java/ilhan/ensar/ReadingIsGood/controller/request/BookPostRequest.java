@@ -7,15 +7,13 @@ import lombok.Getter;
 import java.io.Serializable;
 
 @Getter
-public class CustomerPostRequest implements Serializable {
+public class BookPostRequest implements Serializable {
 
     @NotNull
-    @Schema(example = "Ensar")
-    private String firstName;
-
-    private String middleName;
+    @Schema(example = "The Mathematical Principles of Natural Philosophy")
+    private String name;
 
     @NotNull
-    @Schema(example = "ILHAN")
-    private String familyName;
+    @Schema(example = "1000")
+    private Integer availableAmount;
 }

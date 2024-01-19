@@ -20,6 +20,7 @@ public class CustomerService implements BaseCRUDService<Customer> {
         return repository.save(customer);
     }
 
+    @Override
     public Customer getOrThrow(Long id) {
         return repository.findById(id).orElseThrow();
     }

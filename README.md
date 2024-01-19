@@ -19,3 +19,6 @@
 - It is better to throw exception in controller for too long strings
 - Improve error messages threw by Optional
 - Add pagination to CustomerController.getOrders
+- Author should be added to Book
+- If the feature "decreasing book stock" is necessary. Concurrency should be considered
+- 
