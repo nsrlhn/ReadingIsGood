@@ -15,3 +15,7 @@
 
 - Logging
 - Book may be generalized as Product
+- spring.jpa.open-in-view is enabled by default?
+- It is better to throw exception in controller for too long strings
+- Improve error messages threw by Optional
+- Add pagination to CustomerController.getOrders
