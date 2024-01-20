@@ -1,11 +1,11 @@
 package ilhan.ensar.ReadingIsGood.service;
 
-import ilhan.ensar.ReadingIsGood.controller.request.BookPatchRequest;
 import ilhan.ensar.ReadingIsGood.controller.request.BookPostRequest;
 import ilhan.ensar.ReadingIsGood.model.Book;
 import ilhan.ensar.ReadingIsGood.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -26,14 +26,25 @@ public class BookService implements BaseCRUDService<Book> {
         return repository.save(book);
     }
 
-    public Book patch(Long id, BookPatchRequest request) {
-        // Get
-        Book book = this.getOrThrow(id);
-
+    public Book updateStock(Book book, int newAmount) {
         // Prepare
-        book.addStock(request.getAddAmount());
+        book.setAvailableAmount(newAmount);
 
         // Save
         return repository.save(book);
+    }
+
+    @Transactional
+    public Book updateStock(Long id, Integer newStockAmount) {
+        // Get & Lock
+        Book book = getAndLock(id);
+
+        // Save
+        return this.updateStock(book, newStockAmount);
+    }
+
+    @Transactional
+    public Book getAndLock(Long id) {
+        return repository.findAndLockById(id).orElseThrow();
     }
 }

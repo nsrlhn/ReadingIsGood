@@ -11,5 +11,5 @@ public class BookPatchRequest implements Serializable {
 
     @NotNull
     @Schema(example = "300")
-    private Integer addAmount;
+    private Integer newStockAmount;
 }

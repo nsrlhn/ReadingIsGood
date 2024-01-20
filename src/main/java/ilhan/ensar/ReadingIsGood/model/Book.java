@@ -4,9 +4,11 @@ import ilhan.ensar.ReadingIsGood.controller.request.BookPostRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
 public class Book extends BaseEntity {
 
     @Column(nullable = false)
@@ -24,9 +26,5 @@ public class Book extends BaseEntity {
 
     private Book() {
         super();
-    }
-
-    public void addStock(Integer additionalAmount) {
-        availableAmount += additionalAmount;
     }
 }

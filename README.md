@@ -21,4 +21,7 @@
 - Add pagination to CustomerController.getOrders
 - Author should be added to Book
 - If the feature "decreasing book stock" is necessary. Concurrency should be considered
-- 
+- In ordering, consider locking table for multiple pods
+- unique constraint to Book.name
+- order get apis should return orderList too
+- Return dto instead of entities

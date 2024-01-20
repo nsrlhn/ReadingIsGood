@@ -1,12 +1,12 @@
 package ilhan.ensar.ReadingIsGood.controller;
 
-import ilhan.ensar.ReadingIsGood.controller.request.BookPatchRequest;
 import ilhan.ensar.ReadingIsGood.controller.request.BookPostRequest;
 import ilhan.ensar.ReadingIsGood.model.Book;
 import ilhan.ensar.ReadingIsGood.service.BookService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,8 +25,8 @@ public class BookController {
     }
 
     @PatchMapping("{id}")
-    @Operation(description = "Add book stock")
-    public Book addStock(@PathVariable Long id, @Valid @RequestBody BookPatchRequest request) {
-        return service.patch(id, request);
+    @Operation(description = "Update book stock")
+    public Book updateStock(@PathVariable Long id, @Min(0) @RequestParam Integer newStockAmount) {
+        return service.updateStock(id, newStockAmount);
     }
 }

@@ -9,13 +9,13 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class BookPostRequest implements Serializable {
+public class OrderItemPostRequest implements Serializable {
 
     @NotNull
-    @Schema(example = "The Mathematical Principles of Natural Philosophy")
-    private String name;
+    @Schema(example = "1")
+    private Long bookId;
 
     @NotNull
-    @Schema(example = "1000")
-    private Integer availableAmount;
+    @Schema(example = "1")
+    private Integer amount;
 }
