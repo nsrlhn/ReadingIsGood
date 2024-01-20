@@ -9,9 +9,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -30,10 +29,10 @@ public class CustomerController {
 
     @GetMapping("{id}/getOrders")
     @Operation(description = "Query all orders of the customer")
-    public List<Order> getOrders(@PathVariable Long id) {
+    public Page<Order> getOrders(@PathVariable Long id, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Customer customer = service.getOrThrow(id);
 
-        return orderService.getAll(customer);
+        return orderService.getAll(customer, page, size);
     }
 
     @GetMapping("{id}")
