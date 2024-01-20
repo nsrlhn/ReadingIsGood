@@ -10,6 +10,7 @@
 
 - Swagger Path: http://localhost:8080/swagger-ui/index.html
 - H2 DB Path: http://localhost:8080/h2-console/ -> Credential available in application.yml
+- To activate initial example data add VM option: -Dspring.profiles.active=local
 
 ## TODO
 
