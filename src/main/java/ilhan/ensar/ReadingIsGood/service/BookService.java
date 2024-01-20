@@ -26,25 +26,39 @@ public class BookService implements BaseCRUDService<Book> {
         return repository.save(book);
     }
 
-    public Book updateStock(Book book, int newAmount) {
+    @Transactional
+    public Book getAndLock(Long id) {
+        return repository.findAndLockById(id).orElseThrow();
+    }
+
+    @Transactional
+    public Book increaseStock(Long id, Integer changeAmount) {
+        // Get & Lock
+        Book book = getAndLock(id);
+
         // Prepare
+        int newAmount = book.getAvailableAmount() + changeAmount;
         book.setAvailableAmount(newAmount);
 
-        // Save
+        // Update
         return repository.save(book);
     }
 
     @Transactional
-    public Book updateStock(Long id, Integer newStockAmount) {
+    public Book decreaseStock(Long id, Integer changeAmount) {
         // Get & Lock
         Book book = getAndLock(id);
 
-        // Save
-        return this.updateStock(book, newStockAmount);
-    }
+        // Check
+        int newAmount = book.getAvailableAmount() - changeAmount;
+        if (newAmount < 0) {
+            throw new RuntimeException("There is not enough stock. availableAmount: " + book.getAvailableAmount() + " | changeAmount: " + changeAmount);
+        }
 
-    @Transactional
-    public Book getAndLock(Long id) {
-        return repository.findAndLockById(id).orElseThrow();
+        // Prepare
+        book.setAvailableAmount(newAmount);
+
+        // Update
+        return repository.save(book);
     }
 }

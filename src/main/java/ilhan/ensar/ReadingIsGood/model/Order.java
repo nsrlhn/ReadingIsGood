@@ -40,6 +40,6 @@ public class Order extends BaseEntity {
     }
 
     public enum Status {
-        PROCESS, COMPLETED, CANCELLED
+        COMPLETED
     }
 }

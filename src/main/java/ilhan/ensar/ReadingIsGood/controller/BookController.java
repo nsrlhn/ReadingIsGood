@@ -24,9 +24,15 @@ public class BookController {
         return service.persist(request);
     }
 
-    @PatchMapping("{id}")
-    @Operation(description = "Update book stock")
-    public Book updateStock(@PathVariable Long id, @Min(0) @RequestParam Integer newStockAmount) {
-        return service.updateStock(id, newStockAmount);
+    @PatchMapping("{id}/increaseStock")
+    @Operation(description = "Increase book stock")
+    public Book increaseStock(@PathVariable Long id, @Min(1) @RequestParam Integer changeAmount) {
+        return service.increaseStock(id, changeAmount);
+    }
+
+    @PatchMapping("{id}/decreaseStock")
+    @Operation(description = "Decrease book stock")
+    public Book decreaseStock(@PathVariable Long id, @Min(1) @RequestParam Integer changeAmount) {
+        return service.decreaseStock(id, changeAmount);
     }
 }

@@ -1,5 +1,19 @@
 # ReadingIsGood Book Delivery System
 
+## Running
+
+```
+mvn package
+
+java -jar target/ReadingIsGood-0.0.1-SNAPSHOT.jar
+```
+
+## Features
+
+- Book prices can be updated. To not lose the history, purchase prices are also stored under OrderItems
+- During the stock update processes, related data in database will be locked.
+- More than one type of books can be ordered at once. In case of error, the order will be cancelled as a whole.
+
 ## Technologies
 
 - Java 17
@@ -16,11 +30,15 @@
 
 ### General
 
-- Logging
+- secure endpoints, bearer token
+- Log all changes on entities. (Which user made specific changes and when)
 - spring.jpa.open-in-view is enabled by default?
 - Improve error messages threw by Optional
 - Return dto instead of entities
 - Money decimal needed to be validated
+- error response models
+- Postman request
+- Test ( Unit & Integration - min %50 functionality coverage )
 
 ### Book
 

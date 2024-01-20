@@ -34,7 +34,7 @@ public class DataLoader {
         customerService.persist(prepareCustomerRequest());
         bookService.persist(prepareBookRequest("The Mathematical Principles of Natural Philosophy"));
         bookService.persist(prepareBookRequest("The Human Zoo"));
-        orderService.make(prepareOrderRequest());
+        orderService.place(prepareOrderRequest());
 
         log.info("Example data loaded");
     }

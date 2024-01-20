@@ -24,7 +24,7 @@ public class OrderService implements BaseCRUDService<Order> {
     }
 
     @Transactional
-    public Order make(OrderPostRequest request) {
+    public Order place(OrderPostRequest request) {
         // Get: Customer
         Customer customer = customerService.getOrThrow(request.getCustomerId());
 

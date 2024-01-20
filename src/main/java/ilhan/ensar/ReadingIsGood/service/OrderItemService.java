@@ -28,17 +28,8 @@ public class OrderItemService implements BaseCRUDService<OrderItem> {
     public void saveAll(Order order, List<OrderItemPostRequest> requestList) {
         List<OrderItem> orderItems = new ArrayList<>();
         for (OrderItemPostRequest request : requestList) {
-            // Get: Book
-            Book book = bookService.getAndLock(request.getBookId());
-
-            // Check: Stock
-            int newStockAmount = book.getAvailableAmount() - request.getAmount();
-            if (newStockAmount < 0) {
-                throw new RuntimeException("There is not enough stock.");
-            }
-
             // Update: Stock
-            bookService.updateStock(request.getBookId(), newStockAmount);
+            Book book = bookService.decreaseStock(request.getBookId(), request.getAmount());
 
             // Prepare
             OrderItem orderItem = new OrderItem(order, book, request);

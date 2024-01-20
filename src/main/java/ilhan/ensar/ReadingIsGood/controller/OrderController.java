@@ -21,9 +21,9 @@ public class OrderController {
     private final OrderService service;
 
     @PostMapping
-    @Operation(description = "Persist new order")
-    public Order make(@Valid @RequestBody OrderPostRequest request) {
-        return service.make(request);
+    @Operation(description = "Place new order")
+    public Order place(@Valid @RequestBody OrderPostRequest request) {
+        return service.place(request);
     }
 
     @GetMapping("{id}")
@@ -32,7 +32,7 @@ public class OrderController {
         return service.getOrThrow(id);
     }
 
-    @GetMapping
+    @GetMapping("dateBetween")
     @Operation(description = "Get orders by date")
     public List<Order> search(@RequestParam LocalDate from, @RequestParam LocalDate to) {
         return service.getAll(from, to);
