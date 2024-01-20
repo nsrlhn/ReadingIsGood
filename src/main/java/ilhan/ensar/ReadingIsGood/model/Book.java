@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 @Getter
 public class Book extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
 
     @Setter

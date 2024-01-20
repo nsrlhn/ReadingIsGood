@@ -43,7 +43,6 @@ java -jar target/ReadingIsGood-0.0.1-SNAPSHOT.jar
 
 - Book may be generalized as Product
 - Author should be added to Book
-- unique constraint to Book.name
 
 ### Customer
 
