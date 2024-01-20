@@ -35,6 +35,6 @@ public class OrderController {
     @GetMapping
     @Operation(description = "Get orders by date")
     public List<Order> search(@RequestParam LocalDate from, @RequestParam LocalDate to) {
-        return service.search(from, to);
+        return service.getAll(from, to);
     }
 }

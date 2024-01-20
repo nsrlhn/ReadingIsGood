@@ -29,7 +29,7 @@ public class OrderItemService implements BaseCRUDService<OrderItem> {
         List<OrderItem> orderItems = new ArrayList<>();
         for (OrderItemPostRequest request : requestList) {
             // Get: Book
-            Book book = bookService.getAndLock(order.getId());
+            Book book = bookService.getAndLock(request.getBookId());
 
             // Check: Stock
             int newStockAmount = book.getAvailableAmount() - request.getAmount();

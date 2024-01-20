@@ -8,6 +8,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 public class OrderItem extends BaseEntity {
@@ -24,15 +26,23 @@ public class OrderItem extends BaseEntity {
     @Column(nullable = false)
     private Integer amount;
 
+    @Column(nullable = false)
+    private BigDecimal unitPrice;
+
     public OrderItem(Order order, Book book, OrderItemPostRequest request) {
         super();
 
         this.order = order;
         this.book = book;
         this.amount = request.getAmount();
+        this.unitPrice = book.getPrice();
     }
 
     private OrderItem() {
         super();
+    }
+
+    public BigDecimal getCost() {
+        return unitPrice.multiply(BigDecimal.valueOf(amount));
     }
 }

@@ -14,15 +14,22 @@
 
 ## TODO
 
+### General
+
 - Logging
-- Book may be generalized as Product
 - spring.jpa.open-in-view is enabled by default?
-- It is better to throw exception in controller for too long strings
 - Improve error messages threw by Optional
-- Add pagination to CustomerController.getOrders
+- Return dto instead of entities
+- Money decimal needed to be validated
+
+### Book
+
+- Book may be generalized as Product
 - Author should be added to Book
 - If the feature "decreasing book stock" is necessary. Concurrency should be considered
-- In ordering, consider locking table for multiple pods
+- Update stock is dangerous
 - unique constraint to Book.name
-- order get apis should return orderList too
-- Return dto instead of entities
+
+### Customer
+
+- Add pagination to CustomerController.getOrders

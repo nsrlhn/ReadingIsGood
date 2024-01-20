@@ -6,22 +6,28 @@ import jakarta.persistence.Entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
-@Setter
 public class Book extends BaseEntity {
 
     @Column(nullable = false)
     private String name;
 
+    @Setter
     @Column(nullable = false)
     private Integer availableAmount;
+
+    @Column(nullable = false)
+    private BigDecimal price;
 
     public Book(BookPostRequest request) {
         super();
 
         name = request.getName();
         availableAmount = request.getAvailableAmount();
+        price = request.getPrice();
     }
 
     private Book() {

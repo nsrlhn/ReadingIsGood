@@ -15,6 +15,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +63,7 @@ public class DataLoader {
         BookPostRequest request = new BookPostRequest();
         request.setName(name);
         request.setAvailableAmount(10000);
+        request.setPrice(new BigDecimal("149.99"));
         return request;
     }
 

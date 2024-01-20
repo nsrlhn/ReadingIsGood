@@ -45,7 +45,7 @@ public class OrderService implements BaseCRUDService<Order> {
         return repository.findById(id).orElseThrow();
     }
 
-    public List<Order> search(LocalDate from, LocalDate to) {
+    public List<Order> getAll(LocalDate from, LocalDate to) {
         return repository.findByDateBetween(from, to);
     }
 }
