@@ -35,7 +35,6 @@ java -jar target/ReadingIsGood-0.0.1-SNAPSHOT.jar
 - spring.jpa.open-in-view is enabled by default?
 - Improve error messages threw by Optional
 - Return dto instead of entities
-- Money decimal needed to be validated
 - error response models
 - Postman request
 - Test ( Unit & Integration - min %50 functionality coverage )
@@ -44,8 +43,6 @@ java -jar target/ReadingIsGood-0.0.1-SNAPSHOT.jar
 
 - Book may be generalized as Product
 - Author should be added to Book
-- If the feature "decreasing book stock" is necessary. Concurrency should be considered
-- Update stock is dangerous
 - unique constraint to Book.name
 
 ### Customer
