@@ -8,10 +8,7 @@ spring:
     driverClassName: org.h2.Driver
   jpa:
     defer-datasource-initialization: true
+    open-in-view: false
   sql:
     init:
       mode: embedded
-server:
-  error:
-    include-message: always
-    include-binding-errors: always

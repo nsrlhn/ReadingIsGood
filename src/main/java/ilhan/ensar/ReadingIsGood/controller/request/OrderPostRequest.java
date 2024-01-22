@@ -19,7 +19,7 @@ public class OrderPostRequest implements Serializable {
     private Long customerId;
 
     @NotNull
-    @Schema(example = "PROCESS")
+    @Schema(example = "COMPLETED")
     private Order.Status status;
 
     @NotNull

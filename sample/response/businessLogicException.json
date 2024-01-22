@@ -1,0 +1,6 @@
+{
+  "status": 400,
+  "error": "Business Logic Error",
+  "message": "There is not enough stock. availableAmount: 9999 | decrement: 9999999",
+  "timestamp": 1705934281261
+}

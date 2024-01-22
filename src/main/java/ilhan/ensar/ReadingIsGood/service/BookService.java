@@ -1,6 +1,8 @@
 package ilhan.ensar.ReadingIsGood.service;
 
 import ilhan.ensar.ReadingIsGood.controller.request.BookPostRequest;
+import ilhan.ensar.ReadingIsGood.exception.BusinessLogicException;
+import ilhan.ensar.ReadingIsGood.exception.NotFoundException;
 import ilhan.ensar.ReadingIsGood.model.Book;
 import ilhan.ensar.ReadingIsGood.repository.BookRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,14 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class BookService implements BaseCRUDService<Book> {
+public class BookService {
 
     private final BookRepository repository;
-
-    @Override
-    public Book getOrThrow(Long id) {
-        return repository.findById(id).orElseThrow();
-    }
 
     public Book persist(BookPostRequest request) {
         // Prepare
@@ -28,7 +25,7 @@ public class BookService implements BaseCRUDService<Book> {
 
     @Transactional
     public Book getAndLock(Long id) {
-        return repository.findAndLockById(id).orElseThrow();
+        return repository.findAndLockById(id).orElseThrow(() -> new NotFoundException("Book(id=" + id + ") is not found."));
     }
 
     @Transactional
@@ -45,14 +42,14 @@ public class BookService implements BaseCRUDService<Book> {
     }
 
     @Transactional
-    public Book decreaseStock(Long id, Integer changeAmount) {
+    public Book decreaseStock(Long id, Integer decrement) {
         // Get & Lock
         Book book = getAndLock(id);
 
         // Check
-        int newAmount = book.getAvailableAmount() - changeAmount;
+        int newAmount = book.getAvailableAmount() - decrement;
         if (newAmount < 0) {
-            throw new RuntimeException("There is not enough stock. availableAmount: " + book.getAvailableAmount() + " | changeAmount: " + changeAmount);
+            throw new BusinessLogicException("There is not enough stock. availableAmount: " + book.getAvailableAmount() + " | decrement: " + decrement);
         }
 
         // Prepare

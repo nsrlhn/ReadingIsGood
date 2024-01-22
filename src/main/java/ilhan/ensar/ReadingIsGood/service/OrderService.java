@@ -1,6 +1,7 @@
 package ilhan.ensar.ReadingIsGood.service;
 
 import ilhan.ensar.ReadingIsGood.controller.request.OrderPostRequest;
+import ilhan.ensar.ReadingIsGood.exception.NotFoundException;
 import ilhan.ensar.ReadingIsGood.model.Customer;
 import ilhan.ensar.ReadingIsGood.model.Order;
 import ilhan.ensar.ReadingIsGood.repository.OrderRepository;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class OrderService implements BaseCRUDService<Order> {
+public class OrderService {
 
     private final OrderRepository repository;
     private final CustomerService customerService;
@@ -38,9 +39,8 @@ public class OrderService implements BaseCRUDService<Order> {
         return order;
     }
 
-    @Override
     public Order getOrThrow(Long id) {
-        return repository.findById(id).orElseThrow();
+        return repository.findById(id).orElseThrow(() -> new NotFoundException("Order(id=" + id + ") is not found."));
     }
 
     public List<Order> getAll(Customer customer) {

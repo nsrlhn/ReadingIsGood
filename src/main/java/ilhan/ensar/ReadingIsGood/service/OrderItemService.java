@@ -14,15 +14,10 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class OrderItemService implements BaseCRUDService<OrderItem> {
+public class OrderItemService {
 
     private final OrderItemRepository repository;
     private final BookService bookService;
-
-    @Override
-    public OrderItem getOrThrow(Long id) {
-        return repository.findById(id).orElseThrow();
-    }
 
     @Transactional
     public void saveAll(Order order, List<OrderItemPostRequest> requestList) {
