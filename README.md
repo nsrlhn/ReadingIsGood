@@ -2,10 +2,28 @@
 
 ## Running
 
-```
-mvn package
+Create jar package with maven:
 
-java -jar target/ReadingIsGood-0.0.1-SNAPSHOT.jar
+```
+mvn clean package
+```
+
+Create docker-compose.yml:
+
+```
+version: '3.2'
+
+services:  
+    readIsGood:
+        build: {Path_To_Dockerfile}
+        restart: always
+        ports:
+```
+
+Run Docker Compose:
+
+```
+docker compose up readIsGood --build -d
 ```
 
 ## Features
