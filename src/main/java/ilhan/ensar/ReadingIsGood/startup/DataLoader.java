@@ -71,6 +71,8 @@ public class DataLoader {
         CustomerPostRequest request = new CustomerPostRequest();
         request.setFirstName("Ensar");
         request.setFamilyName("ILHAN");
+        request.setMail("nsrlhn@gmail.com");
+        request.setPassword("password");
         return request;
     }
 }

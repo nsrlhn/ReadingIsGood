@@ -20,4 +20,12 @@ public class CustomerPostRequest implements Serializable {
     @NotNull
     @Schema(example = "ILHAN")
     private String familyName;
+
+    @NotNull
+    @Schema(example = "password")
+    private String password;
+
+    @NotNull
+    @Schema(example = "exampl@gmail.com")
+    private String mail;
 }

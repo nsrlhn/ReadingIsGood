@@ -1,12 +1,13 @@
 package ilhan.ensar.ReadingIsGood.model;
 
-import ilhan.ensar.ReadingIsGood.controller.request.CustomerPostRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Getter
+@Setter
 public class Customer extends BaseEntity {
 
     @Column(nullable = false)
@@ -18,15 +19,9 @@ public class Customer extends BaseEntity {
     @Column(nullable = false)
     private String familyName;
 
-    public Customer(CustomerPostRequest request) {
-        super();
+    @Column(nullable = false, unique = true)
+    private String mail;
 
-        this.firstName = request.getFirstName();
-        this.middleName = request.getMiddleName() == null ? "" : request.getMiddleName();
-        this.familyName = request.getFamilyName();
-    }
-
-    private Customer() {
-        super();
-    }
+    @Column(nullable = false)
+    private String password;
 }
