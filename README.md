@@ -49,9 +49,9 @@ docker compose up readIsGood --build -d
 
 ### General
 
-- Log all changes on entities. (Which user made specific changes and when)
 - Return dto instead of entities
 - Postman request
+- logging is done, but updated fields are not logged
 
 ### Book
 

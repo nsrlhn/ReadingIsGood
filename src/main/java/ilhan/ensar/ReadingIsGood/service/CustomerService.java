@@ -1,6 +1,7 @@
 package ilhan.ensar.ReadingIsGood.service;
 
 import ilhan.ensar.ReadingIsGood.controller.request.CustomerPostRequest;
+import ilhan.ensar.ReadingIsGood.exception.BusinessLogicException;
 import ilhan.ensar.ReadingIsGood.exception.NotFoundException;
 import ilhan.ensar.ReadingIsGood.model.Customer;
 import ilhan.ensar.ReadingIsGood.repository.CustomerRepository;
@@ -16,6 +17,11 @@ public class CustomerService {
     private final PasswordEncoder passwordEncoder;
 
     public Customer persist(CustomerPostRequest request) {
+        // Check
+        if (repository.existsByMail(request.getMail())) {
+            throw new BusinessLogicException("An account already exist with this email address.");
+        }
+
         // Prepare
         Customer customer = new Customer();
         customer.setFirstName(request.getFirstName());
@@ -23,8 +29,6 @@ public class CustomerService {
         customer.setFamilyName(request.getFamilyName());
         customer.setMail(request.getMail());
         customer.setPassword(passwordEncoder.encode(request.getPassword()));
-
-        // TODO : throw a meaningfull error if mail exists
 
         // Save
         return repository.save(customer);

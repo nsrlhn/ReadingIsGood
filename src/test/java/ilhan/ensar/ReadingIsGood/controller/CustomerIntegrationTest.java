@@ -19,6 +19,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
@@ -61,6 +62,27 @@ public class CustomerIntegrationTest {
 
         // Assert
         assertThat(repository.existsById(savedEntity.getId())).isTrue();
+    }
+
+    @Test
+    public void givenAlreadyExistMail_whenPersist_shouldThrow() throws Exception {
+        // Arrange
+        CustomerPostRequest request = new CustomerPostRequest();
+        request.setFirstName("Ensar");
+        request.setFamilyName("ILHAN");
+        request.setMail("test@mail.com");
+        request.setPassword("password");
+
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String json = ow.writeValueAsString(request);
+
+        // Act
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .post("/customer")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(jsonPath("$.message").value("An account already exist with this email address."));
     }
 
     @Test

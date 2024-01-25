@@ -1,13 +1,12 @@
 package ilhan.ensar.ReadingIsGood.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.MappedSuperclass;
+import ilhan.ensar.ReadingIsGood.model.listener.EntityListener;
+import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.io.Serializable;
 
+@EntityListeners(EntityListener.class)
 @Getter
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable {

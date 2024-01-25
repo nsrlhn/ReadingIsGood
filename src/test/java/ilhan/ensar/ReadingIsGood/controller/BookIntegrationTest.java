@@ -21,6 +21,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
 @AutoConfigureMockMvc
@@ -62,6 +63,26 @@ public class BookIntegrationTest {
 
         // Assert
         assertThat(repository.existsById(savedEntity.getId())).isTrue();
+    }
+
+    @Test
+    public void givenAlreadyName_whenPersist_shouldThrow() throws Exception {
+        // Arrange
+        BookPostRequest request = new BookPostRequest();
+        request.setName("Ince Mehmet");
+        request.setAvailableAmount(1000);
+        request.setPrice(BigDecimal.TEN);
+
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String json = ow.writeValueAsString(request);
+
+        // Act
+        this.mockMvc.perform(MockMvcRequestBuilders
+                        .post("/book")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(json))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest())
+                .andExpect(jsonPath("$.message").value("A book already exist with this name."));
     }
 
     @Test

@@ -13,4 +13,6 @@ public interface BookRepository extends BaseRepository<Book> {
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("SELECT e FROM Book e WHERE e.id = :id")
     Optional<Book> findAndLockById(@Param("id") Long id);
+
+    boolean existsByName(String name);
 }

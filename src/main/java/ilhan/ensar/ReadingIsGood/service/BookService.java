@@ -16,6 +16,11 @@ public class BookService {
     private final BookRepository repository;
 
     public Book persist(BookPostRequest request) {
+        // Check
+        if (repository.existsByName(request.getName())) {
+            throw new BusinessLogicException("A book already exist with this name.");
+        }
+
         // Prepare
         Book book = new Book(request);
 
