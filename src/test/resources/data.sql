@@ -1,4 +1,4 @@
-INSERT INTO CUSTOMER (first_name, middle_name, family_name) VALUES ('Isim', '', 'Soyisim');
+INSERT INTO CUSTOMER (first_name, middle_name, family_name, mail, password) VALUES ('Isim', '', 'Soyisim', 'test@mail.com', 'password');
 
 INSERT INTO BOOK (name, available_amount, price) VALUES ('Ince Mehmet', 1000, 10.5);
 INSERT INTO BOOK (name, available_amount, price) VALUES ('Nutuk', 1000, 10.5);

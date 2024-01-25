@@ -42,6 +42,8 @@ public class CustomerIntegrationTest {
         CustomerPostRequest request = new CustomerPostRequest();
         request.setFirstName("Ensar");
         request.setFamilyName("ILHAN");
+        request.setMail("nsrlhn@gmail.com");
+        request.setPassword("password");
 
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         String json = ow.writeValueAsString(request);
