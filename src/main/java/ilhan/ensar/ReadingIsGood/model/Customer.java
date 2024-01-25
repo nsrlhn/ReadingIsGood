@@ -1,5 +1,6 @@
 package ilhan.ensar.ReadingIsGood.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import lombok.Getter;
@@ -23,5 +24,6 @@ public class Customer extends BaseEntity {
     private String mail;
 
     @Column(nullable = false)
+    @JsonIgnore
     private String password;
 }

@@ -49,11 +49,9 @@ docker compose up readIsGood --build -d
 
 ### General
 
-- secure endpoints, bearer token
 - Log all changes on entities. (Which user made specific changes and when)
 - Return dto instead of entities
 - Postman request
-- Test ( Unit & Integration - min %50 functionality coverage )
 
 ### Book
 
