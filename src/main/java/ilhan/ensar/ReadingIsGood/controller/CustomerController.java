@@ -27,7 +27,7 @@ public class CustomerController {
         return service.persist(request);
     }
 
-    @GetMapping("{id}/getOrders")
+    @GetMapping("{id}/orders")
     @Operation(description = "Query all orders of the customer")
     public Page<Order> getOrders(@PathVariable Long id, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
         Customer customer = service.getOrThrow(id);
