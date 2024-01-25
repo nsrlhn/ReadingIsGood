@@ -1,13 +1,15 @@
 spring:
   h2:
-    console.enabled: true
+    console.enabled: false
   datasource:
-    url: jdbc:h2:mem:test
+    url: jdbc:h2:mem:itest
     username: sa
     password:
     driverClassName: org.h2.Driver
   jpa:
+    defer-datasource-initialization: true
     open-in-view: false
   sql:
     init:
       mode: embedded
+

@@ -17,7 +17,7 @@ services:
     readIsGood:
         build: {Path_To_Dockerfile}
         restart: always
-        ports:
+        ports: {Exported_Port}:8080
 ```
 
 Run Docker Compose:
@@ -60,3 +60,7 @@ docker compose up readIsGood --build -d
 - Book may be generalized as Product
 - Author should be added to Book
 - Stock information may be stored somewhere else
+
+### Statistic
+
+- A separate entity may be created for statistic to improve performance
