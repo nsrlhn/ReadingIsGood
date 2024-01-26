@@ -121,4 +121,11 @@ public class BookIntegrationTest {
                         .param("changeAmount", "10000"))
                 .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
+
+    @Test
+    public void get() throws Exception {
+        this.mockMvc
+                .perform(MockMvcRequestBuilders.get("/book/1"))
+                .andExpect(MockMvcResultMatchers.status().isOk());
+    }
 }

@@ -35,4 +35,10 @@ public class BookController {
     public Book decreaseStock(@PathVariable Long id, @Min(1) @RequestParam Integer changeAmount) {
         return service.decreaseStock(id, changeAmount);
     }
+
+    @GetMapping("{id}")
+    @Operation(description = "Get the book")
+    public Book get(@PathVariable Long id) {
+        return service.getOrThrow(id);
+    }
 }

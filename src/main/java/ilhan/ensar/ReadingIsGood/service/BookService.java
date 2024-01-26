@@ -63,4 +63,8 @@ public class BookService {
         // Update
         return repository.save(book);
     }
+
+    public Book getOrThrow(Long id) {
+        return repository.findById(id).orElseThrow(() -> new NotFoundException("Book(id=" + id + ") is not found."));
+    }
 }
