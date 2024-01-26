@@ -44,13 +44,14 @@ docker compose up readIsGood --build -d
 - H2 DB Path: http://localhost:8080/h2-console/ -> Credential available in application.yml
 - To activate initial example data add VM option: -Dspring.profiles.active=local
 - Sample exception messages available in /sample/response folder
+- APIs can be tested via postman: https://www.postman.com/dark-astronaut-745640/workspace/deloitte
+- Postman collections are also available in /postman folder
 
 ## TODO
 
 ### General
 
 - Return dto instead of entities
-- Postman request
 - logging is done, but updated fields are not logged
 
 ### Book

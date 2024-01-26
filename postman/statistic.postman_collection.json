@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "0ea84d5a-180b-4913-a68b-3020ff9771f0",
+		"name": "statistic",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11726894",
+		"_collection_link": "https://www.postman.com/dark-astronaut-745640/workspace/deloitte/collection/11726894-0ea84d5a-180b-4913-a68b-3020ff9771f0?action=share&source=collection_link&creator=11726894"
+	},
+	"item": [
+		{
+			"name": "customerMonthlyOrder",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statistic/customerMonthlyOrder/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statistic",
+						"customerMonthlyOrder",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "password",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "nsrlhn@gmail.com",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
